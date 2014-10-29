@@ -13,18 +13,12 @@
         android:icon="@drawable/ic_action_save"
         android:orderInCategory="98"
         android:title="@string/action_save_title"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_discard"
         android:icon="@drawable/ic_action_remove"
         android:orderInCategory="99"
         android:title="@string/action_discard_title"
-        app:showAsAction="ifRoom"></item>
-    <item
-        android:id="@+id/action_map"
-        android:icon="@drawable/ic_action_locate"
-        android:orderInCategory="97"
-        android:title="@string/action_map_title"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom"/>
 
 </menu>

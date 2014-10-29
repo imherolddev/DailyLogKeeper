@@ -1,8 +1,8 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 21
+    buildToolsVersion "21.0.2"
 
     defaultConfig {
         applicationId "com.imherolddev.dailylogkeeper"
@@ -23,7 +23,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.+'
-    compile 'com.android.support:appcompat-v7:19.+'
-    compile 'com.google.android.gms:play-services:+'
+    compile 'com.android.support:support-v4:21.+'
+    compile 'com.android.support:appcompat-v7:21.+'
 }

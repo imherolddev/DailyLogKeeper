@@ -1,7 +1,5 @@
 package com.imherolddev.dailylogkeeper;
 
-import com.imherolddev.dailylogkeeper.maps.MapActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -68,10 +66,6 @@ public class NewLogActivity extends ActionBarActivity {
         switch (item.getItemId()) {
 
             case R.id.action_settings:
-                return true;
-
-            case R.id.action_map:
-                startActivity(new Intent(this, MapActivity.class));
                 return true;
 
             case R.id.action_save:

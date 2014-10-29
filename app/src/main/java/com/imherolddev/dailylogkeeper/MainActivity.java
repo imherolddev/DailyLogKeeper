@@ -1,33 +1,25 @@
 package com.imherolddev.dailylogkeeper;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.OnNavigationListener;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
+import android.widget.Toast;
+
+import com.imherolddev.dailylogkeeper.settings.SettingsActivity;
+import com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment.GetLogListener;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.OnNavigationListener;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.SpinnerAdapter;
-import android.widget.Toast;
-
-import com.imherolddev.dailylogkeeper.maps.MapActivity;
-import com.imherolddev.dailylogkeeper.settings.SettingsActivity;
-import com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment;
-import com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment.GetLogListener;
 
 /**
  * @author imherolddev
