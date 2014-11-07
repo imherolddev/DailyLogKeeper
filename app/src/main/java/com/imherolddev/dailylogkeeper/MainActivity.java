@@ -1,31 +1,35 @@
 package com.imherolddev.dailylogkeeper;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Outline;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.OnNavigationListener;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.SpinnerAdapter;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
 import com.imherolddev.dailylogkeeper.settings.SettingsActivity;
 import com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment.GetLogListener;
+import com.imherolddev.dailylogkeeper.view_fragments.HelpDialog;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * @author imherolddev
  */
-public class MainActivity extends ActionBarActivity implements
-        OnNavigationListener, GetLogListener {
+public class MainActivity extends ActionBarActivity implements GetLogListener, PersistenceHelper {
 
     public static final int ADD_ENTRY_REQUEST = 0;
     public static final int EDIT_ENTRY_REQUEST = 1;
@@ -35,12 +39,7 @@ public class MainActivity extends ActionBarActivity implements
     private ArrayList<DailyLog> logs = new ArrayList<>();
     private int logCounter;
 
-    private ActionBar actionBar;
-    private SpinnerAdapter changeView;
-
-    private FragmentManager fm;
-
-    // private DailyViewFragment dvf;
+    private ImageButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,26 +47,28 @@ public class MainActivity extends ActionBarActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fm = getSupportFragmentManager();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.maintoolbar);
+        setSupportActionBar(toolbar);
 
-        actionBar = this.getSupportActionBar();
-        changeView = ArrayAdapter.createFromResource(this.getSupportActionBar()
-                        .getThemedContext(), R.array.action_view_list,
-                android.R.layout.simple_spinner_dropdown_item
-        );
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        actionBar.setListNavigationCallbacks(changeView, this);
+        fab = (ImageButton) findViewById(R.id.fab);
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP)
+        fab.setOutlineProvider(new ViewOutlineProvider() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void getOutline(View view, Outline outline) {
+                int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
+                outline.setOval(0, 0, size, size);
+            }
+        });
 
-        // dvf = (DailyViewFragment) fm.findFragmentById(R.id.fragment1);
-
-        readLogs();
+        logs = readLogs();
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        readLogs();
+        logs = readLogs();
         logCounter = logs.size();
     }
 
@@ -90,15 +91,15 @@ public class MainActivity extends ActionBarActivity implements
                 return true;
 
             case R.id.add_entry:
-
                 Intent intent = new Intent(this, NewLogActivity.class);
-                intent.putExtra("UID", this.logCounter);
+                intent.putExtra(NewLogActivity.UID_EXTRA, this.logCounter);
+                intent.putExtra(NewLogActivity.JOB_NAMES_EXTRA, bundleJobNames());
                 startActivityForResult(intent, ADD_ENTRY_REQUEST);
                 return true;
 
             case R.id.action_help:
                 HelpDialog dialog = new HelpDialog();
-                dialog.show(fm, getString(R.string.dialog_help_title));
+                dialog.show(getSupportFragmentManager(), getString(R.string.dialog_help_title));
                 return true;
 
 
@@ -109,11 +110,13 @@ public class MainActivity extends ActionBarActivity implements
 
     }
 
+    public void fabClick(View v) {
 
-    @Override
-    public boolean onNavigationItemSelected(int arg0, long arg1) {
-        // TODO Add logic for changing views
-        return false;
+        Intent intent = new Intent(this, NewLogActivity.class);
+        intent.putExtra(NewLogActivity.UID_EXTRA, this.logCounter);
+        intent.putExtra(NewLogActivity.JOB_NAMES_EXTRA, bundleJobNames());
+        startActivityForResult(intent, ADD_ENTRY_REQUEST);
+
     }
 
     @Override
@@ -138,7 +141,13 @@ public class MainActivity extends ActionBarActivity implements
 
                     DailyLog edited = (DailyLog) data.getSerializableExtra("log");
 
-                    logs.set(edited.getUID(), edited);
+                    for (DailyLog log : logs) {
+                        if (log.getUID() == edited.getUID()) {
+                            logs.set(logs.indexOf(log), edited);
+                            break;
+                        }
+                    }
+
                     saveLogs(logs);
 
                 } else if (resultCode == RESULT_CANCELED) {
@@ -165,7 +174,8 @@ public class MainActivity extends ActionBarActivity implements
 
     }
 
-    private void saveLogs(ArrayList<DailyLog> logs) {
+    @Override
+    public void saveLogs(ArrayList<DailyLog> logs) {
 
         try {
 
@@ -180,10 +190,11 @@ public class MainActivity extends ActionBarActivity implements
 
     }
 
-    @SuppressWarnings("unchecked")
-    private void readLogs() {
+    @Override
+    public ArrayList<DailyLog> readLogs() {
 
         File logFile = getBaseContext().getFileStreamPath(LOGS_FILE);
+        ArrayList<DailyLog> logArrayList = new ArrayList<>();
 
         if (logFile.exists()) {
 
@@ -192,14 +203,11 @@ public class MainActivity extends ActionBarActivity implements
                 ObjectInputStream ois = new ObjectInputStream(
                         openFileInput(LOGS_FILE));
 
-                logs = (ArrayList<DailyLog>) ois.readObject();
+                logArrayList = (ArrayList<DailyLog>) ois.readObject();
                 ois.close();
 
             } catch (IOException | ClassNotFoundException ioex) {
-
-                logs = new ArrayList<DailyLog>();
                 toast(R.string.serial);
-
             }
 
         } else {
@@ -208,6 +216,7 @@ public class MainActivity extends ActionBarActivity implements
 
         }
 
+        return logArrayList;
     }
 
     private void toast(int id) {
@@ -217,6 +226,23 @@ public class MainActivity extends ActionBarActivity implements
     @Override
     public ArrayList<DailyLog> getLog() {
         return logs;
+    }
+
+    //Bundle Job names to AutoCompleteTextView in NewLog
+    private String[] bundleJobNames() {
+
+        ArrayList<String> strings = new ArrayList<>();
+
+        for (DailyLog log : logs) {
+
+            strings.add(log.getJobName());
+
+        }
+
+        HashSet<String> jobNames = new HashSet<>(strings);
+
+        return jobNames.toArray(new String[jobNames.size()]);
+
     }
 
 }

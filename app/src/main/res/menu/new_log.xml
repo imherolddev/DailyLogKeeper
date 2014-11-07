@@ -4,20 +4,16 @@
     tools:context="com.imherolddev.dailylogkeeper.NewLogActivity">
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_save"
         android:icon="@drawable/ic_action_save"
-        android:orderInCategory="98"
+        android:orderInCategory="99"
         android:title="@string/action_save_title"
         app:showAsAction="ifRoom"/>
+
     <item
         android:id="@+id/action_discard"
-        android:icon="@drawable/ic_action_remove"
-        android:orderInCategory="99"
+        android:icon="@drawable/ic_action_discard"
+        android:orderInCategory="98"
         android:title="@string/action_discard_title"
         app:showAsAction="ifRoom"/>
 

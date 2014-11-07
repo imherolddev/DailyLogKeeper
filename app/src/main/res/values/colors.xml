@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="dark_gray">#5E5E5E</color>
+    <color name="card_shadow">#CABBBBBB</color>
+    <color name="shadow">#80111111</color>
+    <color name="background">#F0F0F0</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <color name="main">#71B2B1</color>
+    <color name="dark">#366665</color>
+    <color name="accent">#BBFFFD</color>
+    <color name="bold">#66412C</color>
+    <color name="bold_inverse">#B28871</color>
+
+    <color name="in">#B4B149</color>
+    <color name="out">#FF4000</color>
+
+</resources>

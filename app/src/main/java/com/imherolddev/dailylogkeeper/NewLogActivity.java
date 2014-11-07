@@ -4,50 +4,102 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
+import java.util.Date;
+
 public class NewLogActivity extends ActionBarActivity {
+
+    public static final String LOG_EXTRA = "log_extra";
+    public static final String JOB_NAMES_EXTRA = "job_names";
+    public static final String UID_EXTRA = "UID";
 
     Intent returnIntent;
     Bundle extras;
 
-    private EditText et_jobName;
+    private AutoCompleteTextView et_jobName;
     private EditText et_logTitle;
     private EditText et_logEntry;
+
+    private Date preEditDate;
+    private boolean edited = false;
+
+    private int uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_log);
 
-        extras = getIntent().getExtras();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.maintoolbar);
+        setSupportActionBar(toolbar);
 
-        et_jobName = (EditText) findViewById(R.id.et_job_name);
+        et_jobName = (AutoCompleteTextView) findViewById(R.id.et_job_name);
         et_logTitle = (EditText) findViewById(R.id.et_title);
         et_logEntry = (EditText) findViewById(R.id.et_entry);
 
-    }
+        if (savedInstanceState != null) {
 
-    @Override
-    public View onCreatePanelView(int featureId) {
+            et_jobName.setText(savedInstanceState.getString("jobName"));
+            et_logTitle.setText(savedInstanceState.getString("logTitle"));
+            et_logEntry.setText(savedInstanceState.getString("logEntry"));
 
-        if (!(extras == null)) {
 
-            if (extras.size() > 1) {
+        }
 
-                et_jobName.setText(extras.getString("jobName"));
-                et_logTitle.setText(extras.getString("logTitle"));
-                et_logEntry.setText(extras.getString("logEntry"));
+        extras = getIntent().getExtras();
+
+        if (extras != null) {
+
+            if (extras.containsKey(JOB_NAMES_EXTRA)) {
+
+                String[] jobNameArray = extras.getStringArray(JOB_NAMES_EXTRA);
+
+                ArrayAdapter<String> arrayAdapter =
+                        new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobNameArray);
+                et_jobName.setAdapter(arrayAdapter);
+
+            }
+
+            if (extras.containsKey(UID_EXTRA)) {
+                uid = extras.getInt(UID_EXTRA);
+            }
+
+            if (extras.containsKey(LOG_EXTRA)) {
+
+                DailyLog log = (DailyLog) extras.getSerializable(LOG_EXTRA);
+
+                uid = log.getUID();
+                et_jobName.setText(log.getJobName());
+                et_logTitle.setText(log.getTitle());
+                et_logEntry.setText(log.getLogEntry());
+
+                preEditDate = log.getCreation();
+                log.setEdited(new Date(System.currentTimeMillis()));
+
+                edited = true;
 
             }
 
         }
 
-        return null;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle save) {
+
+        save.putString(et_jobName.getText().toString(), "");
+        save.putString(et_logTitle.getText().toString(), "");
+        save.putString(et_logEntry.getText().toString(), "");
+
+        super.onSaveInstanceState(save);
 
     }
 
@@ -70,9 +122,15 @@ public class NewLogActivity extends ActionBarActivity {
 
             case R.id.action_save:
 
-                DailyLog log = new DailyLog(extras.getInt("UID"), et_jobName.getText()
+                Date date;
+                if (!edited) {
+                    date = new Date();
+                } else {
+                    date = preEditDate;
+                }
+                DailyLog log = new DailyLog(uid, et_jobName.getText()
                         .toString(), et_logTitle.getText().toString(), et_logEntry
-                        .getText().toString());
+                        .getText().toString(), date);
 
                 returnIntent = new Intent();
                 returnIntent.putExtra("log", log);

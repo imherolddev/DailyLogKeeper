@@ -1,4 +1,4 @@
-package com.imherolddev.dailylogkeeper;
+package com.imherolddev.dailylogkeeper.view_fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,6 +8,8 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.imherolddev.dailylogkeeper.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.imherolddev.dailylogkeeper"
-    android:versionCode="1"
-    android:versionName="1.0">
+    package="com.imherolddev.dailylogkeeper">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -28,7 +26,7 @@
 
         <activity
             android:name=".settings.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label="@string/app_name"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -37,7 +35,7 @@
 
         <activity
             android:name=".NewLogActivity"
-            android:label="@string/title_activity_new_log"
+            android:label="@string/app_name"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data

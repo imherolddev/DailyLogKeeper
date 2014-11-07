@@ -41,16 +41,18 @@ public class DailyLog implements Serializable {
     /**
      * Constructor with title
      *
+     * @param UID - the UID to set
+     * @param jobName - the job name to set
      * @param title - the title to set
+     * @param logEntry - the log entry to set
      */
-    public DailyLog(int UID, String jobName, String title, String logEntry) {
+    public DailyLog(int UID, String jobName, String title, String logEntry, Date date) {
 
         this.UID = UID;
         this.jobName = jobName;
         this.title = title;
         this.logEntry = logEntry;
-
-        creation = new Date();
+        this.creation = date;
 
     }
 
@@ -85,6 +87,10 @@ public class DailyLog implements Serializable {
 
     public Date getEdited() {
         return edited;
+    }
+
+    public void setEdited(Date date) {
+        this.edited = date;
     }
 
     public String getLogEntry() {
