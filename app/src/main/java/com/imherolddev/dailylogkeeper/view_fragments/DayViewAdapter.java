@@ -3,11 +3,9 @@
  */
 package com.imherolddev.dailylogkeeper.view_fragments;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +14,9 @@ import android.widget.TextView;
 
 import com.imherolddev.dailylogkeeper.DailyLog;
 import com.imherolddev.dailylogkeeper.R;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * @author imherolddev
@@ -55,7 +56,8 @@ public class DayViewAdapter extends ArrayAdapter<DailyLog> {
         content.setText(log.getLogEntry());
 
         TextView created = (TextView) convertView.findViewById(R.id.tv_created);
-        DateFormat df = DateFormat.getDateInstance();
+        SimpleDateFormat df = new SimpleDateFormat(PreferenceManager.getDefaultSharedPreferences
+                (context).getString("dateFormat", "MM/dd/yyyy"));
         created.setText(df.format(log.getCreation()));
 
         return convertView;

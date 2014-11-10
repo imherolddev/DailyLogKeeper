@@ -113,7 +113,8 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
         StringBuilder body = new StringBuilder();
         String lastJob = "";
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
+        SimpleDateFormat sdf = new SimpleDateFormat(sharedPreferences.getString("dateFormat",
+                "MM/dd/yyyy"));
 
         for (Integer p : positions) {
 

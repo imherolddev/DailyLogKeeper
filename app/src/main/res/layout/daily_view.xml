@@ -9,11 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/listview_margin"
         android:background="@drawable/layer_card_background"
-        android:gravity="center"
-        android:paddingBottom="@dimen/listview_padding"
-        android:paddingLeft="@dimen/listview_padding"
-        android:paddingRight="@dimen/listview_padding"
-        android:paddingTop="@dimen/listview_padding">
+        android:gravity="center">
 
         <View
             android:id="@+id/divider_bottom"
@@ -27,14 +23,15 @@
             android:id="@+id/divider_top"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_alignLeft="@+id/divider_bottom"
-            android:layout_alignTop="@+id/tv_description"
-            android:background="?android:attr/listDivider" />
+            android:background="?android:attr/listDivider"
+            android:layout_below="@+id/tv_job_title"
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/listview_padding"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/tv_job_title"
             android:textStyle="italic"
@@ -54,6 +51,7 @@
             android:id="@+id/tv_created"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/listview_padding"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tv_content"
             android:text="@string/placeholder"
@@ -63,6 +61,7 @@
             android:id="@+id/tv_job_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/listview_padding"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="@string/placeholder"

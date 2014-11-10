@@ -14,6 +14,7 @@
     <color name="accent">#BBFFFD</color>
     <color name="bold">#66412C</color>
     <color name="bold_inverse">#B28871</color>
+    <color name="accent_alpha">#80BBFFFD</color>
 
     <color name="in">#B4B149</color>
     <color name="out">#FF4000</color>

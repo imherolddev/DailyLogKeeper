@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -40,6 +41,13 @@ public class NewLogActivity extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.maintoolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         et_jobName = (AutoCompleteTextView) findViewById(R.id.et_job_name);
         et_logTitle = (EditText) findViewById(R.id.et_title);

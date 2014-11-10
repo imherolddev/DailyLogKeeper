@@ -5,14 +5,14 @@
 
     <item
         android:id="@+id/action_save"
-        android:icon="@drawable/ic_action_save"
+        android:icon="@drawable/ic_save"
         android:orderInCategory="99"
         android:title="@string/action_save_title"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_discard"
-        android:icon="@drawable/ic_action_discard"
+        android:icon="@drawable/ic_delete"
         android:orderInCategory="98"
         android:title="@string/action_discard_title"
         app:showAsAction="ifRoom"/>
