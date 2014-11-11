@@ -6,11 +6,13 @@ package com.imherolddev.dailylogkeeper.settings;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.annotation.NonNull;
 
 import com.imherolddev.dailylogkeeper.R;
+import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
 
 /**
  * @author imherolddev
@@ -19,6 +21,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
     EditTextPreference email;
     EditTextPreference username;
+    ListPreference dateFormat;
 
     SharedPreferences sharedPreferences;
 
@@ -35,20 +38,25 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         super.onCreate(savedInstanceState);
         this.addPreferencesFromResource(R.xml.fragment_settings);
 
-        email = (EditTextPreference) findPreference("email");
-        username = (EditTextPreference) findPreference("username");
+        email = (EditTextPreference) findPreference(PersistenceHelper.KEY_EMAIL);
+        username = (EditTextPreference) findPreference(PersistenceHelper.KEY_USERNAME);
+        dateFormat = (ListPreference) findPreference(PersistenceHelper.KEY_DATE_FORMAT);
 
         sharedPreferences = getPreferenceScreen().getSharedPreferences();
 
         if (savedInstanceState != null) {
 
-            email.setSummary(savedInstanceState.getString("email", ""));
-            username.setSummary(savedInstanceState.getString("username", ""));
+            email.setSummary(savedInstanceState.getString(PersistenceHelper.KEY_EMAIL, ""));
+            username.setSummary(savedInstanceState.getString(PersistenceHelper.KEY_USERNAME, ""));
+            dateFormat.setSummary(savedInstanceState.getString(PersistenceHelper.KEY_DATE_FORMAT,
+                    "MMM d, yyyy"));
 
         } else {
 
-            email.setSummary(sharedPreferences.getString("email", ""));
-            username.setSummary(sharedPreferences.getString("username", ""));
+            email.setSummary(sharedPreferences.getString(PersistenceHelper.KEY_EMAIL, ""));
+            username.setSummary(sharedPreferences.getString(PersistenceHelper.KEY_USERNAME, ""));
+            dateFormat.setSummary(sharedPreferences.getString(PersistenceHelper.KEY_DATE_FORMAT,
+                    "MMM d, yyyy"));
 
         }
 
@@ -75,11 +83,11 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     @Override
     public void onSaveInstanceState(@NonNull Bundle save) {
 
-        EditTextPreference email = (EditTextPreference) findPreference("email");
-        EditTextPreference username = (EditTextPreference) findPreference("username");
+        EditTextPreference email = (EditTextPreference) findPreference(PersistenceHelper.KEY_EMAIL);
+        EditTextPreference username = (EditTextPreference) findPreference(PersistenceHelper.KEY_USERNAME);
 
-        save.putString("email", email.getText());
-        save.putString("username", username.getText());
+        save.putString(PersistenceHelper.KEY_EMAIL, email.getText());
+        save.putString(PersistenceHelper.KEY_USERNAME, username.getText());
 
         super.onSaveInstanceState(save);
 
@@ -103,6 +111,10 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         if (preference instanceof EditTextPreference) {
             EditTextPreference pref = (EditTextPreference) preference;
             preference.setSummary(pref.getText());
+        } else if (preference instanceof ListPreference) {
+            ListPreference pref = (ListPreference) preference;
+            preference.setSummary(pref.getEntry()
+            );
         }
 
     }

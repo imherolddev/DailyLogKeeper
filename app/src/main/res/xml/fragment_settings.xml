@@ -2,18 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="Sharing">
+        android:title="@string/sharing">
 
         <EditTextPreference
             android:key="username"
             android:title="@string/username"
-            android:summary="Your Name"
-            android:hint="Your Name"
+            android:hint="@string/username"
             android:inputType="textCapWords"/>
 
         <EditTextPreference
             android:key="email"
-            android:title="@string/defaule_email"
+            android:title="@string/default_email"
             android:summary="username@mail.com"
             android:hint="username@mail.com"
             android:inputType="textEmailAddress"/>
@@ -21,14 +20,13 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Formatting">
+        android:title="@string/formatting">
 
-        <EditTextPreference
+        <ListPreference
             android:key="dateFormat"
             android:title="Date Format"
-            android:summary="MM/dd/yyyy"
-            android:hint="MM/dd/yyyy"
-            android:inputType="textNoSuggestions"/>
+            android:entries="@array/date_format_entries"
+            android:entryValues="@array/date_format_values"/>
 
     </PreferenceCategory>
 

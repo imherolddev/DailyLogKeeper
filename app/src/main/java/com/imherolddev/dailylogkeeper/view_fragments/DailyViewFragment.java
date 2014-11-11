@@ -35,7 +35,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
     public interface GetLogListener {
 
-        public ArrayList<DailyLog> getLog();
+        public ArrayList<DailyLog> getLogs();
 
     }
 
@@ -59,7 +59,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
         super.onActivityCreated(savedInstanceState);
 
         logListener = (GetLogListener) getActivity();
-        logs = logListener.getLog();
+        logs = logListener.getLogs();
 
         persistenceHelper = (PersistenceHelper) getActivity();
 
@@ -79,7 +79,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
         super.onResume();
         logs.clear();
-        logs.addAll(logListener.getLog());
+        logs.addAll(logListener.getLogs());
         dayView.notifyDataSetChanged();
 
     }
@@ -97,7 +97,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
     }
 
-    public void sendLog(ArrayList<Integer> positions) {
+    public void sendLog(ArrayList<Integer> ids) {
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailTo:"));
@@ -105,34 +105,43 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences
                 (getActivity());
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {sharedPreferences.getString("email",
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {sharedPreferences.getString
+                (PersistenceHelper.KEY_EMAIL,
                 "")});
 
-        String subject = sharedPreferences.getString("username", "user") + " - Daily Logs";
+        String subject = sharedPreferences.getString(PersistenceHelper.KEY_USERNAME, "user") + " - Daily Logs";
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
         StringBuilder body = new StringBuilder();
         String lastJob = "";
-        SimpleDateFormat sdf = new SimpleDateFormat(sharedPreferences.getString("dateFormat",
-                "MM/dd/yyyy"));
+        SimpleDateFormat sdf = new SimpleDateFormat(sharedPreferences.getString(PersistenceHelper.KEY_DATE_FORMAT,
+                "MMM d, yyyy"));
 
-        for (Integer p : positions) {
+        for (Integer id : ids) {
 
-            DailyLog logToSend = logs.get(p);
+            for (DailyLog log : logs) {
 
-            if (!logToSend.getJobName().equals(lastJob)) {
+                if (id == log.getUID()) {
 
-                lastJob = logToSend.getJobName();
-                body.append(logToSend.getJobName()).append(":").append("\n")
-                .append("\n");
+                    if (!log.getJobName().equals(lastJob)) {
+
+                        lastJob = log.getJobName();
+                        body.append(log.getJobName()).append(":").append("\n")
+                                .append("\n");
+
+                    }
+
+                    body.append(log.getTitle()).append("\n")
+                            .append(log.getLogEntry()).append("\n")
+                            .append("\n")
+                            .append(sdf.format(log.getCreation())).append("\n")
+                            .append("\n");
+
+                    break;
+
+                }
 
             }
-
-            body.append(logToSend.getTitle()).append("\n")
-                    .append(logToSend.getLogEntry()).append("\n")
-                    .append("\n")
-                    .append(sdf.format(logToSend.getCreation())).append("\n")
-                    .append("\n");
 
         }
 
@@ -236,8 +245,18 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                for (Integer pos : selectionList) {
-                                    logs.remove(pos.intValue());
+
+                                for (Integer id : selectionList) {
+
+                                    for (DailyLog log : logs) {
+
+                                        if (id == log.getUID()) {
+                                            logs.remove(log);
+                                            break;
+                                        }
+
+                                    }
+
                                 }
 
                                 persistenceHelper.saveLogs(logs);

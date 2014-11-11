@@ -224,7 +224,7 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
     }
 
     @Override
-    public ArrayList<DailyLog> getLog() {
+    public ArrayList<DailyLog> getLogs() {
         return logs;
     }
 
