@@ -2,7 +2,7 @@
 <resources>
 
     <!-- App and activities names -->
-    <string name="app_name">Daily Log Keeper</string>
+    <string name="app_name" translatable="false">Daily Log Keeper</string>
     <string name="action_settings">Settings</string>
     <string name="title_add_entry">Add Entry</string>
     <string name="action_help">Help</string>
