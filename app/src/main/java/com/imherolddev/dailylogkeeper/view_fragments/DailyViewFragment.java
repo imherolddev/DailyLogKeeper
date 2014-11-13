@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.imherolddev.dailylogkeeper.DailyLog;
 import com.imherolddev.dailylogkeeper.MainActivity;
@@ -49,6 +50,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
     private DayViewAdapter dayView;
     private ListView listView;
+    private TextView empty;
 
     private int selectionCount;
     private ArrayList<Integer> selectionList;
@@ -67,7 +69,9 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
         setListAdapter(dayView);
 
         listView = getListView();
-
+        setEmptyText(getString(R.string.no_logs));
+        TextView empty = (TextView) getListView().getEmptyView();
+        empty.setTextSize(getResources().getDimension(R.dimen.empty_text_size));
         listView.setDivider(null);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         listView.setMultiChoiceModeListener(this);
