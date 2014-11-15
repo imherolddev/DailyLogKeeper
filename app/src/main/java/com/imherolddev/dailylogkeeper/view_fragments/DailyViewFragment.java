@@ -70,8 +70,6 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
         listView = getListView();
         setEmptyText(getString(R.string.no_logs));
-        TextView empty = (TextView) getListView().getEmptyView();
-        empty.setTextSize(getResources().getDimension(R.dimen.empty_text_size));
         listView.setDivider(null);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         listView.setMultiChoiceModeListener(this);
