@@ -62,7 +62,7 @@
     <string name="serial">Error con el archivo…</string>
     <string name="no_logs">No hay registros creados, haga click en el más para comenzar</string>
 
-    <string name="email_sig">Sent from Daily Log Keeper, for Android</string>
+    <string name="email_sig">Enviado desde Registro del Día, para Android</string>
 
     <string name="oops">Oops!!!</string>
     <string name="placeholder">Placeholder</string>
