@@ -2,20 +2,20 @@
 <resources>
 
     <!-- App and activities names -->
-    <string name="app_name">Daily Log Keeper</string>
+    <string name="app_name">Registro del día</string>
     <string name="action_settings">Configuración</string>
-    <string name="title_add_entry">Add Entry</string>
+    <string name="title_add_entry">Agregar entrada</string>
     <string name="action_help">Ayuda</string>
 
     <!-- Settings -->
     <string name="title_activity_settings">Configuración</string>
     <string name="username">Su nombre</string>
-    <string name="default_email">Default email</string>
-    <string name="sharing">Sharing</string>
-    <string name="formatting">Formatting</string>
+    <string name="default_email">Email por defecto</string>
+    <string name="sharing">Compartiendo</string>
+    <string name="formatting">Formateo</string>
 
     <string-array name="date_format_entries">
-        <item>November 8, 2014</item>
+        <item>Noviembre 8, 2014</item>
         <item>Nov 8, 2014</item>
         <item>11/08/2014</item>
         <item>11/08/14</item>
@@ -33,34 +33,34 @@
     </string-array>
 
     <!-- NewLog -->
-    <string name="title_activity_new_log">New Log</string>
+    <string name="title_activity_new_log">Nuevo Registro</string>
     <string name="tv_log_title">Título:</string>
     <string name="et_hint_title">Escribe un título</string>
-    <string name="tv_log_entry">Entry:</string>
-    <string name="et_hint_entry">Enter you daily log here</string>
+    <string name="tv_log_entry">Entrada:</string>
+    <string name="et_hint_entry">Ingresa el registro del día aquí</string>
     <string name="action_save_title">Guardar</string>
     <string name="action_discard_title">Descartar</string>
-    <string name="tv_job">Job Name:</string>
-    <string name="et_job_hint">Enter Job name</string>
+    <string name="tv_job">Nombre de tarea:</string>
+    <string name="et_job_hint">Ingrese una tarea</string>
     <string name="log_canceled">Cambios descartados</string>
-    <string name="log_discarded">Log discarded</string>
+    <string name="log_discarded">Registro descartado</string>
 
     <!-- Discard Dialog -->
     <string name="title_alert_discard">Descartar</string>
-    <string name="msg_alert_discard">Are you sure you want to discard?</string>
+    <string name="msg_alert_discard">¿Seguro deseas descartar los cambios?</string>
     <string name="OK">Aceptar</string>
     <string name="CANCEL">Cancelar</string>
     <string name="send">Enviar</string>
 
     <!-- Help Dialog -->
-    <string name="dialog_help_title">Information - scroll down</string>
+    <string name="dialog_help_title">Información - Bajar</string>
     <string name="action_share">Compartir</string>
-    <string name="action_mode_title">Select logs</string>
-    <string name="selected">selected</string>
+    <string name="action_mode_title">Seleccione los registros</string>
+    <string name="selected">seleccionado</string>
 
     <!-- Miscellaneous -->
-    <string name="serial">Error with file…</string>
-    <string name="no_logs">No logs have been created, click on the plus to get started</string>
+    <string name="serial">Error con el archivo…</string>
+    <string name="no_logs">No hay registros creados, haga click en el más para comenzar</string>
 
     <string name="email_sig">Sent from Daily Log Keeper, for Android</string>
 
