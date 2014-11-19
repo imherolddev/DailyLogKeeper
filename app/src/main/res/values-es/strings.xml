@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App and activities names -->
+    <string name="app_name">Registro del día</string>
+    <string name="action_settings">Configuración</string>
+    <string name="title_add_entry">Agregar entrada</string>
+    <string name="action_help">Ayuda</string>
+
+    <!-- Settings -->
+    <string name="title_activity_settings">Configuración</string>
+    <string name="username">Su nombre</string>
+    <string name="default_email">Email por defecto</string>
+    <string name="sharing">Compartiendo</string>
+    <string name="formatting">Formateo</string>
+
+    <string-array name="date_format_entries">
+        <item>Noviembre 8, 2014</item>
+        <item>Nov 8, 2014</item>
+        <item>11/08/2014</item>
+        <item>11/08/14</item>
+        <item>2014/11/08</item>
+        <item>14/11/08</item>
+    </string-array>
+
+    <string-array name="date_format_values">
+        <item>MMMM d, yyyy</item>
+        <item>MMM d, yyyy</item>
+        <item>MM/dd/yyyy</item>
+        <item>MM/dd/yy</item>
+        <item>yyyy/MM/dd</item>
+        <item>yy/MM/dd</item>
+    </string-array>
+
+    <!-- NewLog -->
+    <string name="title_activity_new_log">Nuevo Registro</string>
+    <string name="tv_log_title">Título:</string>
+    <string name="et_hint_title">Escribe un título</string>
+    <string name="tv_log_entry">Entrada:</string>
+    <string name="et_hint_entry">Ingresa el registro del día aquí</string>
+    <string name="action_save_title">Guardar</string>
+    <string name="action_discard_title">Descartar</string>
+    <string name="tv_job">Nombre de tarea:</string>
+    <string name="et_job_hint">Ingrese una tarea</string>
+    <string name="log_canceled">Cambios descartados</string>
+    <string name="log_discarded">Registro descartado</string>
+
+    <!-- Discard Dialog -->
+    <string name="title_alert_discard">Descartar</string>
+    <string name="msg_alert_discard">¿Seguro deseas descartar los cambios?</string>
+    <string name="OK">Aceptar</string>
+    <string name="CANCEL">Cancelar</string>
+    <string name="send">Enviar</string>
+
+    <!-- Help Dialog -->
+    <string name="dialog_help_title">Información - Bajar</string>
+    <string name="action_share">Compartir</string>
+    <string name="action_mode_title">Seleccione los registros</string>
+    <string name="selected">seleccionado</string>
+
+    <!-- Miscellaneous -->
+    <string name="serial">Error con el archivo…</string>
+    <string name="no_logs">No hay registros creados, haga click en el más para comenzar</string>
+
+    <string name="email_sig">Enviado desde Registro del Día, para Android</string>
+
+    <string name="oops">Oops!!!</string>
+    <string name="placeholder">Placeholder</string>
+
+</resources>
