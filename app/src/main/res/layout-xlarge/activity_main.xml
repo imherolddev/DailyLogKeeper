@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context="com.imherolddev.dailylogkeeper.MainActivity">
+    tools:context="com.imherolddev.dailylogkeeper.activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment"
+        android:name="com.imherolddev.dailylogkeeper.fragments.DailyViewFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_main" />

@@ -1,4 +1,4 @@
-package com.imherolddev.dailylogkeeper;
+package com.imherolddev.dailylogkeeper.activities;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -16,10 +16,11 @@ import android.view.ViewOutlineProvider;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
-import com.imherolddev.dailylogkeeper.settings.SettingsActivity;
-import com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment.GetLogListener;
-import com.imherolddev.dailylogkeeper.view_fragments.HelpDialog;
+import com.imherolddev.dailylogkeeper.R;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
+import com.imherolddev.dailylogkeeper.persistence.PersistenceHelper;
+import com.imherolddev.dailylogkeeper.fragments.DailyViewFragment.GetLogListener;
+import com.imherolddev.dailylogkeeper.fragments.HelpDialog;
 
 import java.io.File;
 import java.io.IOException;

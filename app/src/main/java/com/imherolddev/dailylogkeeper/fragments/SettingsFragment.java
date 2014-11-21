@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper.settings;
+package com.imherolddev.dailylogkeeper.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.preference.PreferenceFragment;
 import android.support.annotation.NonNull;
 
 import com.imherolddev.dailylogkeeper.R;
-import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
+import com.imherolddev.dailylogkeeper.persistence.PersistenceHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

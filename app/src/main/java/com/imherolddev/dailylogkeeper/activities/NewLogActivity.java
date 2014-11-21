@@ -1,4 +1,4 @@
-package com.imherolddev.dailylogkeeper;
+package com.imherolddev.dailylogkeeper.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+
+import com.imherolddev.dailylogkeeper.R;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
 
 import java.util.Date;
 

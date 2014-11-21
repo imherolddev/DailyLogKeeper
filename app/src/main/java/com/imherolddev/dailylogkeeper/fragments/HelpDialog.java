@@ -1,4 +1,4 @@
-package com.imherolddev.dailylogkeeper.view_fragments;
+package com.imherolddev.dailylogkeeper.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

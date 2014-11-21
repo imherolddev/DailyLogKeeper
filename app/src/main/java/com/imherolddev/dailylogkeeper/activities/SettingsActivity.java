@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper.settings;
+package com.imherolddev.dailylogkeeper.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.imherolddev.dailylogkeeper.R;
+import com.imherolddev.dailylogkeeper.fragments.SettingsFragment;
 
 /**
  * @author imherolddev

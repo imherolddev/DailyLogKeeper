@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper.view_fragments;
+package com.imherolddev.dailylogkeeper.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,11 +20,12 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.imherolddev.dailylogkeeper.DailyLog;
-import com.imherolddev.dailylogkeeper.MainActivity;
-import com.imherolddev.dailylogkeeper.NewLogActivity;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
+import com.imherolddev.dailylogkeeper.activities.MainActivity;
+import com.imherolddev.dailylogkeeper.activities.NewLogActivity;
 import com.imherolddev.dailylogkeeper.R;
-import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
+import com.imherolddev.dailylogkeeper.adapters.DayViewAdapter;
+import com.imherolddev.dailylogkeeper.persistence.PersistenceHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

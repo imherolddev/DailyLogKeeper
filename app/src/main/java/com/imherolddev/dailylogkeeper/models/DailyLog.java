@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper;
+package com.imherolddev.dailylogkeeper.models;
 
 import java.io.Serializable;
 import java.util.Date;

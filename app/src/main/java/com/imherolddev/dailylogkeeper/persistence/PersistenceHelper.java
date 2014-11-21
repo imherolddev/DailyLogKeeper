@@ -1,6 +1,6 @@
-package com.imherolddev.dailylogkeeper.persistance;
+package com.imherolddev.dailylogkeeper.persistence;
 
-import com.imherolddev.dailylogkeeper.DailyLog;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
 
 import java.util.ArrayList;
 
