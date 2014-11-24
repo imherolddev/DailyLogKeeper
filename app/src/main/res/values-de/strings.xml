@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daily Log Keeper</string>
+    <string name="CANCEL">Abbrechen</string>
+    <string name="OK">OK</string>
+    <string name="action_discard_title">Verwerfen</string>
+    <string name="action_help">Hilfe</string>
+    <string name="action_mode_title">Wähle Logs aus</string>
+    <string name="action_save_title">Speichern</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_share">Teilen</string>
+    <string name="default_email">Standard E-Mail</string>
+    <string name="dialog_help_title">Informationen - Scrolle runter</string>
+    <string name="email_sig">Gesendet von Daily Log Keeper, für Android</string>
+    <string name="et_hint_entry">Gebe dein tägliches Protokoll hier ein</string>
+    <string name="et_hint_title">Füge dein Titel hier hinzu</string>
+    <string name="et_job_hint">Gebe den Job Namen ein</string>
+    <string name="formatting">Formation</string>
+    <string name="log_canceled">Änderungen verworfen</string>
+    <string name="log_discarded">Protokoll verworfen</string>
+    <string name="no_logs">Es wurden noch keine Protokolle erstellt, klicke auf das Plus um zu starten</string>
+    <string name="msg_alert_discard">Bist du dir sicher, dass du dass verwerfen willst?</string>
+    <string name="oops">Oops!!!</string>
+    <string name="selected">ausgewählt</string>
+    <string name="send">Senden</string>
+    <string name="serial">Fehler mit Datei...</string>
+    <string name="sharing">Teilen</string>
+    <string name="title_activity_new_log">Neues Protokoll</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_add_entry">Eintrag hinzufügen</string>
+    <string name="title_alert_discard">Verwerfen</string>
+    <string name="tv_job">Job Name:</string>
+    <string name="tv_log_entry">Eintrag:</string>
+    <string name="tv_log_title">Titel:</string>
+    <string name="username">Dein Name:</string>
+</resources>
