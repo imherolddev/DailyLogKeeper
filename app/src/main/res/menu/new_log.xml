@@ -11,9 +11,16 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/action_photo"
+        android:icon="@drawable/ic_camera_alt_white_24dp"
+        android:orderInCategory="98"
+        android:title="@string/action_photo_title"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/action_discard"
         android:icon="@drawable/ic_delete"
-        android:orderInCategory="98"
+        android:orderInCategory="97"
         android:title="@string/action_discard_title"
         app:showAsAction="ifRoom"/>
 
