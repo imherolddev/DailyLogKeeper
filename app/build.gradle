@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1"
+    buildToolsVersion "21.1.1"
 
     defaultConfig {
         applicationId "com.imherolddev.dailylogkeeper"
         minSdkVersion 17
         targetSdkVersion 21
-        versionCode 5
-        versionName "1.1.1"
+        versionCode 7
+        versionName "1.2.0"
 
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_7

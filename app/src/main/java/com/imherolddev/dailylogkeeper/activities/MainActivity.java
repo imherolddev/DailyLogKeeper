@@ -1,10 +1,12 @@
-package com.imherolddev.dailylogkeeper;
+package com.imherolddev.dailylogkeeper.activities;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Outline;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,10 +16,11 @@ import android.view.ViewOutlineProvider;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
-import com.imherolddev.dailylogkeeper.settings.SettingsActivity;
-import com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment.GetLogListener;
-import com.imherolddev.dailylogkeeper.view_fragments.HelpDialog;
+import com.imherolddev.dailylogkeeper.R;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
+import com.imherolddev.dailylogkeeper.persistence.PersistenceHelper;
+import com.imherolddev.dailylogkeeper.fragments.DailyViewFragment.GetLogListener;
+import com.imherolddev.dailylogkeeper.fragments.HelpDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +41,9 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
 
     private ArrayList<DailyLog> logs = new ArrayList<>();
     private int logCounter;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     private ImageButton fab;
 
@@ -63,13 +69,16 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
 
         logs = readLogs();
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         logs = readLogs();
-        logCounter = logs.size();
+        logCounter = sharedPreferences.getInt(PersistenceHelper.KEY_LOG_COUNT, logs.size());
     }
 
     @Override
@@ -129,6 +138,8 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
 
                     logs.add(0, (DailyLog) data.getSerializableExtra("log"));
                     saveLogs(logs);
+                    logCounter++;
+                    editor.putInt(PersistenceHelper.KEY_LOG_COUNT, logCounter);
 
                 } else if (resultCode == RESULT_CANCELED) {
                     toast(R.string.log_canceled);
@@ -209,10 +220,6 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
             } catch (IOException | ClassNotFoundException ioex) {
                 toast(R.string.serial);
             }
-
-        } else {
-
-            toast(R.string.no_logs);
 
         }
 

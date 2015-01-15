@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper.view_fragments;
+package com.imherolddev.dailylogkeeper.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,12 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.imherolddev.dailylogkeeper.DailyLog;
-import com.imherolddev.dailylogkeeper.MainActivity;
-import com.imherolddev.dailylogkeeper.NewLogActivity;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
+import com.imherolddev.dailylogkeeper.activities.MainActivity;
+import com.imherolddev.dailylogkeeper.activities.NewLogActivity;
 import com.imherolddev.dailylogkeeper.R;
-import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
+import com.imherolddev.dailylogkeeper.adapters.DayViewAdapter;
+import com.imherolddev.dailylogkeeper.persistence.PersistenceHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
 
     private DayViewAdapter dayView;
     private ListView listView;
+    private TextView empty;
 
     private int selectionCount;
     private ArrayList<Integer> selectionList;
@@ -67,7 +70,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
         setListAdapter(dayView);
 
         listView = getListView();
-
+        setEmptyText(getString(R.string.no_logs));
         listView.setDivider(null);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         listView.setMultiChoiceModeListener(this);

@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper.settings;
+package com.imherolddev.dailylogkeeper.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +12,10 @@ import android.preference.PreferenceFragment;
 import android.support.annotation.NonNull;
 
 import com.imherolddev.dailylogkeeper.R;
-import com.imherolddev.dailylogkeeper.persistance.PersistenceHelper;
+import com.imherolddev.dailylogkeeper.persistence.PersistenceHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author imherolddev
@@ -48,15 +51,20 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
             email.setSummary(savedInstanceState.getString(PersistenceHelper.KEY_EMAIL, ""));
             username.setSummary(savedInstanceState.getString(PersistenceHelper.KEY_USERNAME, ""));
-            dateFormat.setSummary(savedInstanceState.getString(PersistenceHelper.KEY_DATE_FORMAT,
-                    "MMM d, yyyy"));
+            dateFormat.setSummary(
+                    new SimpleDateFormat(
+                            savedInstanceState.getString(PersistenceHelper.KEY_DATE_FORMAT,
+                                    "MMM d, yyyy")).format(new Date())
+            );
 
         } else {
 
             email.setSummary(sharedPreferences.getString(PersistenceHelper.KEY_EMAIL, ""));
             username.setSummary(sharedPreferences.getString(PersistenceHelper.KEY_USERNAME, ""));
-            dateFormat.setSummary(sharedPreferences.getString(PersistenceHelper.KEY_DATE_FORMAT,
-                    "MMM d, yyyy"));
+            dateFormat.setSummary(
+                    new SimpleDateFormat(
+                            sharedPreferences.getString(PersistenceHelper.KEY_DATE_FORMAT,
+                                    "MMM d, yyyy")).format(new Date()));
 
         }
 

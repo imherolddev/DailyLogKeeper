@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper;
+package com.imherolddev.dailylogkeeper.models;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -37,6 +37,10 @@ public class DailyLog implements Serializable {
      * Log entry
      */
     private String logEntry;
+    /**
+     * URI for photo
+     */
+    private String photoUri;
 
     /**
      * Constructor with title
@@ -102,4 +106,11 @@ public class DailyLog implements Serializable {
     }
 
 
+    public String getPhotoUri() {
+        return photoUri;
+    }
+
+    public void setPhotoUri(String photoUri) {
+        this.photoUri = photoUri;
+    }
 }

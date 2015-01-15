@@ -20,7 +20,8 @@
         <item>11/08/2014</item>
         <item>11/08/14</item>
         <item>2014/11/08</item>
-        <item>14/11/08</item>
+        <item>08/11/2014</item>
+        <item>08/11/14</item>
     </string-array>
 
     <string-array name="date_format_values">
@@ -29,7 +30,8 @@
         <item>MM/dd/yyyy</item>
         <item>MM/dd/yy</item>
         <item>yyyy/MM/dd</item>
-        <item>yy/MM/dd</item>
+        <item>dd/MM/yyyy</item>
+        <item>dd/MM/yy</item>
     </string-array>
 
     <!-- NewLog -->
@@ -40,10 +42,16 @@
     <string name="et_hint_entry">Enter you daily log here</string>
     <string name="action_save_title">Save</string>
     <string name="action_discard_title">Discard</string>
+    <string name="action_photo_title">Add Photo</string>
     <string name="tv_job">Job Name:</string>
     <string name="et_job_hint">Enter Job name</string>
     <string name="log_canceled">Changes discarded</string>
     <string name="log_discarded">Log discarded</string>
+
+    <string-array name="choose_add_photo">
+        <item>Photos</item>
+        <item>Camera</item>
+    </string-array>
 
     <!-- Discard Dialog -->
     <string name="title_alert_discard">Discard</string>
@@ -65,6 +73,5 @@
     <string name="email_sig">Sent from Daily Log Keeper, for Android</string>
 
     <string name="oops">Oops!!!</string>
-    <string name="placeholder">Placeholder</string>
 
 </resources>

@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.imherolddev.dailylogkeeper.view_fragments;
+package com.imherolddev.dailylogkeeper.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.imherolddev.dailylogkeeper.DailyLog;
+import com.imherolddev.dailylogkeeper.models.DailyLog;
 import com.imherolddev.dailylogkeeper.R;
 
 import java.text.SimpleDateFormat;

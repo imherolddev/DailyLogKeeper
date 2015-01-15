@@ -6,38 +6,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context="com.imherolddev.dailylogkeeper.MainActivity">
+    tools:context="com.imherolddev.dailylogkeeper.activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/maintoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"/>
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.imherolddev.dailylogkeeper.view_fragments.DailyViewFragment"
+        android:name="com.imherolddev.dailylogkeeper.fragments.DailyViewFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main"/>
 
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/fab"
+        android:contentDescription="@string/title_activity_new_log"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
         android:background="@drawable/fab"
         android:onClick="fabClick"
         android:src="@drawable/ic_add_white"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
