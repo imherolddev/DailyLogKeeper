@@ -11,7 +11,6 @@
         <item name="actionModeStyle">@style/AppTheme.ActionMode</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_arrow_back_white</item>
 
-        <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategory</item>
     </style>
 
     <style name="AppTheme.ActionMode" parent="Widget.AppCompat.ActionMode">
@@ -26,9 +25,6 @@
 
     <style name="AppTheme.ActionMode.SubTitleText" parent="TextAppearance.AppCompat.Widget.ActionMode.Subtitle">
         <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="AppTheme.PreferenceCategory">
     </style>
 
 </resources>

@@ -6,7 +6,9 @@
 
     <dimen name="zero">0dp</dimen>
 
-    <dimen name="card_corners">2dp</dimen>
+    <dimen name="appBarHeight">192dp</dimen>
+
+    <dimen name="card_corners">4dp</dimen>
     <dimen name="card_margins">1dp</dimen>
     <dimen name="card_bottom">2dp</dimen>
 
@@ -23,7 +25,7 @@
 
     <dimen name="fab_size">56dp</dimen>
     <dimen name="fab_radius">28dp</dimen>
-    <dimen name="fab_elevation">2dp</dimen>
-    <dimen name="fab_pressed_elevation">4dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_pressed_elevation">12dp</dimen>
 
 </resources>

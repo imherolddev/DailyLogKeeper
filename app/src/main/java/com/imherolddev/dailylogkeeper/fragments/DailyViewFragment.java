@@ -50,8 +50,6 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
     private PersistenceHelper persistenceHelper;
 
     private DayViewAdapter dayView;
-    private ListView listView;
-    private TextView empty;
 
     private int selectionCount;
     private ArrayList<Integer> selectionList;
@@ -69,7 +67,7 @@ public class DailyViewFragment extends ListFragment implements AbsListView.Multi
         dayView = new DayViewAdapter(getActivity(), logs);
         setListAdapter(dayView);
 
-        listView = getListView();
+        ListView listView = getListView();
         setEmptyText(getString(R.string.no_logs));
         listView.setDivider(null);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);

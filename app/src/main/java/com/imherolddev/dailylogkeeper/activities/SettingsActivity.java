@@ -5,6 +5,7 @@ package com.imherolddev.dailylogkeeper.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -14,7 +15,7 @@ import com.imherolddev.dailylogkeeper.fragments.SettingsFragment;
 /**
  * @author imherolddev
  */
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     /**
      * No arg constructor

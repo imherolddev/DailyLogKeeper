@@ -14,7 +14,7 @@ public interface PersistenceHelper {
     public static final String KEY_DATE_FORMAT = "dateFormat";
     public static final String KEY_LOG_COUNT = "logCount";
 
-    public void saveLogs(ArrayList<DailyLog> logArrayList);
-    public ArrayList<DailyLog> readLogs();
+    void saveLogs(ArrayList<DailyLog> logArrayList);
+    ArrayList<DailyLog> readLogs();
 
 }

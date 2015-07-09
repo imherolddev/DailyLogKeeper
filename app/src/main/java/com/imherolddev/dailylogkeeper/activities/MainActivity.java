@@ -7,7 +7,10 @@ import android.graphics.Outline;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +35,7 @@ import java.util.HashSet;
 /**
  * @author imherolddev
  */
-public class MainActivity extends ActionBarActivity implements GetLogListener, PersistenceHelper {
+public class MainActivity extends AppCompatActivity implements GetLogListener, PersistenceHelper {
 
     public static final int ADD_ENTRY_REQUEST = 0;
     public static final int EDIT_ENTRY_REQUEST = 1;
@@ -43,9 +46,6 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
     private int logCounter;
 
     private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-
-    private ImageButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
         Toolbar toolbar = (Toolbar) findViewById(R.id.maintoolbar);
         setSupportActionBar(toolbar);
 
-        fab = (ImageButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP)
         fab.setOutlineProvider(new ViewOutlineProvider() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -70,7 +70,6 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
         logs = readLogs();
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
 
     }
 
@@ -139,7 +138,9 @@ public class MainActivity extends ActionBarActivity implements GetLogListener, P
                     logs.add(0, (DailyLog) data.getSerializableExtra("log"));
                     saveLogs(logs);
                     logCounter++;
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt(PersistenceHelper.KEY_LOG_COUNT, logCounter);
+                    editor.apply();
 
                 } else if (resultCode == RESULT_CANCELED) {
                     toast(R.string.log_canceled);
